@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, Image } from 'react-native'
+import { View, Text, FlatList, Image, Button } from 'react-native'
 import { styles } from './style.js'
 
 class Home extends React.Component {
@@ -42,6 +42,10 @@ class Home extends React.Component {
     const { DATA } = this.state;
     return (
       <View style={styles.container}>
+        <Button
+          title="CounterScreen"
+          onPress={() => this.props.navigation.replace('CounterScreen')}
+        />
         <FlatList
           data={DATA}
           renderItem={this.renderItem}

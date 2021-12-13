@@ -1,6 +1,6 @@
 # React-Native-Demo
 
-This application with a simple UI, api and redux middlewar.
+This example for simple UI, api and redux.
 
 # Run: 
 
