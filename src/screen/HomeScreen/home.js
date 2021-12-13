@@ -42,10 +42,6 @@ class Home extends React.Component {
     const { DATA } = this.state;
     return (
       <View style={styles.container}>
-        <Button
-          title="CounterScreen"
-          onPress={() => this.props.navigation.replace('CounterScreen')}
-        />
         <FlatList
           data={DATA}
           renderItem={this.renderItem}
