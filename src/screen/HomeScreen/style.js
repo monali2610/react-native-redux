@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     fontSize: 12,
   },
   column: {
+    marginLeft: 10,
     flexDirection: 'column'
   }
 })
