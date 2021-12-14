@@ -3,19 +3,16 @@ import { View, Text, FlatList, Image, Button } from 'react-native'
 import { styles } from './style.js'
 
 import { connect } from "react-redux";
-import apiCall from "../../Axios";
+import { actionCreator } from "../../Axios";
 
 class Home extends React.Component {
   componentDidMount() {
-    this.props
-      .apiCall("https://jsonplaceholder.typicode.com/posts")
+    this.props.actionCreator("https://jsonplaceholder.typicode.com/photos")
   }
 
   renderItem = ({ item }) => (
     <View style={styles.item}>
-      <Image source={{
-        uri: 'https://picsum.photos/200/300'
-      }}
+      <Image source={{ uri: item.thumbnailUrl }}
         style={{ width: 40 }}
       />
       <View style={styles.column}>
@@ -39,7 +36,7 @@ class Home extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  apiCall: url => dispatch(apiCall(url))
+  actionCreator: url => dispatch(actionCreator(url))
 });
 
 const mapStateToProps = state => ({

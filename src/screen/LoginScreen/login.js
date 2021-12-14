@@ -1,33 +1,40 @@
 import React from "react";
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { styles } from './style.js'
+import { connect } from "react-redux";
+import { actionUserCreator } from "../../Axios";
 
 class Login extends React.Component {
 
   state = {
-    email: "",
-    password: "",
+    email: "shanna@melissa.tv",
+    password: "12345",
     emailError: '',
     passwordError: ''
   }
 
+  componentDidMount() {
+    this.props.actionUserCreator("https://jsonplaceholder.typicode.com/users")
+  }
   onSubmit = () => {
+    const userList = this.props.user.map((item) => item.email.toLowerCase())
     const { email, password } = this.state
-    //  if (email.toLowerCase() === 'admin' && password.toLowerCase() === '12345') {
-    this.props.navigation.replace('HomeScreen')
-    // } else {
-    //   this.setState({ emailError: 'Email required.' })
-    //   this.setState({ passwordError: 'Password required.' })
-    // }
+    if (userList.includes(email.toLowerCase()) && password.toLowerCase() === '12345') {
+      this.props.navigation.push('HomeScreen')
+    } else {
+      this.setState({ emailError: 'Email required.' })
+      this.setState({ passwordError: 'Password required.' })
+    }
   }
 
   render() {
+    const { email, password } = this.state
     return (
       <View style={styles.container}>
-
         <Text style={styles.logo}>Demo App</Text>
         <View style={styles.inputView} >
           <TextInput
+            value={email}
             style={styles.inputText}
             placeholder="Email..."
             placeholderTextColor="white"
@@ -38,6 +45,7 @@ class Login extends React.Component {
         )}
         <View style={styles.inputView} >
           <TextInput
+            value={password}
             secureTextEntry
             style={styles.inputText}
             placeholder="Password..."
@@ -60,4 +68,18 @@ class Login extends React.Component {
     );
   }
 }
-export default Login;
+
+
+const mapDispatchToProps = dispatch => ({
+  actionUserCreator: (url) => dispatch(actionUserCreator(url))
+});
+
+const mapStateToProps = state => ({
+  user: state.apiUserReducer.user,
+  error: state.apiUserReducer.error,
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

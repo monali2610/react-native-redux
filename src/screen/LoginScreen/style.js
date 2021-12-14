@@ -4,14 +4,14 @@ export const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: '#003f5c',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
   logo: {
     fontWeight: "bold",
     fontSize: 50,
-    color: "white",
+    color: "#003f5c",
     marginBottom: 40
   },
   inputView: {
@@ -29,12 +29,12 @@ export const styles = StyleSheet.create({
   },
   forgot: {
     marginTop: 30,
-    color: "white",
+    color: "#003f5c",
     fontSize: 11
   },
   loginBtn: {
     width: "80%",
-    backgroundColor: "white",
+    backgroundColor: "#003f5c",
     borderRadius: 25,
     height: 50,
     alignItems: "center",
@@ -43,9 +43,9 @@ export const styles = StyleSheet.create({
     marginBottom: 10
   },
   loginText: {
-    color: "#003f5c"
+    color: "white"
   },
   signupText: {
-    color: 'white'
+    color: '#003f5c'
   }
 })

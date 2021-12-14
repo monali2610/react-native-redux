@@ -1,4 +1,4 @@
-import ACTION_TYPES from '../Constants';
+import ACTION_TYPES from '../../Constants';
 
 export const fetchData = () => ({
   type: ACTION_TYPES.FETCH_PENDING

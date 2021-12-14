@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { fetchData, fetchSuccess, fetchError } from "../Redux/Actions";
+import { fetchData, fetchSuccess, fetchError } from "../Redux/Actions/HomeAction";
+import { fetchUserSuccess, fetchUserError } from "../Redux/Actions/UserAction";
 
-const actionCreator = url => dispatch => {
+export const actionCreator = url => dispatch => {
   return new Promise(() => {
     axios
       .get(url)
       .then(response => {
-        console.log("shdsjhdsjd", response)
         dispatch(fetchSuccess(response.data));
       })
       .catch(error => {
@@ -15,4 +15,16 @@ const actionCreator = url => dispatch => {
   });
 };
 
-export default actionCreator;
+
+export const actionUserCreator = (url) => dispatch => {
+  return new Promise(() => {
+    axios
+      .get(url)
+      .then(response => {
+        dispatch(fetchUserSuccess(response.data));
+      })
+      .catch(error => {
+        dispatch(fetchUserError(error));
+      });
+  });
+};
